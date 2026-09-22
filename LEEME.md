@@ -70,11 +70,16 @@ el rosa y el dorado son pequeños detalles y están ajustados a ojo.
 
 ---
 
-## Pendiente por definir
+## Decisiones
 
-- [ ] Hora de la recepción en el salón
-- [ ] Número de WhatsApp para confirmar asistencia
-- [ ] Canción (dejarla en `musica/`)
-- [ ] Fotos, si va a llevar (dejarlas en `imagenes/`)
-- [ ] Mensaje de la invitación
-- [ ] ¿Lleva sección de regalos / lluvia de sobres?
+- Recepción a las **7:30 PM**
+- WhatsApp para confirmar: **33 1364 0730**
+- Fotos: solo parroquia, salón y vestimenta (sin fotos de la festejada).
+  Los originales están en `referencias/originales/`
+- Sin lluvia de sobres
+
+## Pendiente
+
+- [ ] **Canción.** Déjala en `musica/` y en `js/animaciones.js` cambia
+      `musica: ''` por la ruta, por ejemplo `musica: 'musica/cancion.mp3'`.
+      Mientras esté vacía, los botones de música no aparecen.
