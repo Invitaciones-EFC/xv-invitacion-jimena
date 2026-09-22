@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Allura&family=Marcellus&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="css/estilos.css?v=2">
+<link rel="stylesheet" href="css/estilos.css?v=4">
 </head>
 <body class="cerrada">
 
@@ -211,11 +211,11 @@
         confirmar tu asistencia.
       </p>
 
-      <form class="rsvp-form" id="rsvp-form" novalidate>
-        <label class="campo-etiqueta" for="rsvp-nombre">Nombre completo</label>
-        <input class="campo" type="text" id="rsvp-nombre" name="nombre"
-               placeholder="Tu nombre completo" autocomplete="name">
+      <p class="rsvp-plazo">
+        Confirma antes del <strong data-fecha="limite">11 de octubre</strong>
+      </p>
 
+      <form class="rsvp-form" id="rsvp-form" novalidate>
         <label class="campo-etiqueta" for="rsvp-asistencia">¿Asistirás?</label>
         <select class="campo" id="rsvp-asistencia" name="asistencia">
           <option value="">Selecciona una opción</option>
@@ -234,7 +234,7 @@
         </button>
       </form>
 
-      <p class="rsvp-nota">Se abrirá WhatsApp con tu confirmación lista para enviar.</p>
+      <p class="rsvp-nota" id="rsvp-nota">Se abrirá WhatsApp con tu confirmación lista para enviar.</p>
     </div>
   </div>
 </section>
@@ -246,6 +246,6 @@
   <p class="cierre-fecha" data-fecha="larga">Sábado 7 de noviembre de 2026</p>
 </footer>
 
-<script src="js/animaciones.js?v=2"></script>
+<script src="js/animaciones.js?v=4"></script>
 </body>
 </html>

@@ -12,6 +12,10 @@ var CONFIG = {
   // Los meses van de 0 a 11: noviembre = 10.
   fecha: new Date(2026, 10, 7, 18, 0),
 
+  // Último día para confirmar. Se acepta todo ese día hasta la medianoche;
+  // a partir del día siguiente el formulario ya no deja enviar.
+  limite: new Date(2026, 9, 11, 23, 59, 59),
+
   // 33 1364 0730  →  52 + los 10 dígitos, sin espacios ni guiones
   whatsapp: '523313640730',
 
@@ -38,6 +42,7 @@ var CONFIG = {
 
   var formatos = {
     completa: f.getDate() + ' de ' + MESES[f.getMonth()] + ' de ' + f.getFullYear(),
+    limite: CONFIG.limite.getDate() + ' de ' + MESES[CONFIG.limite.getMonth()],
     larga: Dia + ' ' + f.getDate() + ' de ' + MESES[f.getMonth()] + ' de ' + f.getFullYear()
   };
 
@@ -160,9 +165,26 @@ var CONFIG = {
   var forma = document.getElementById('rsvp-form');
   if (!forma) return;
 
-  var nombre = document.getElementById('rsvp-nombre');
   var asiste = document.getElementById('rsvp-asistencia');
   var error  = document.getElementById('rsvp-error');
+  var boton  = forma.querySelector('button[type="submit"]');
+  var plazo  = document.querySelector('.rsvp-plazo');
+  var nota   = document.getElementById('rsvp-nota');
+
+  function cerrado() { return Date.now() > CONFIG.limite.getTime(); }
+
+  // Pasada la fecha límite el formulario se cierra: no se puede enviar nada más
+  if (cerrado()) {
+    asiste.disabled = true;
+    boton.disabled = true;
+    forma.classList.add('cerrado');
+    if (plazo) plazo.hidden = true;
+    if (nota) {
+      nota.textContent = 'El plazo para confirmar ya terminó. Si aún deseas ' +
+                         'avisarnos, comunícate directamente por WhatsApp.';
+      nota.classList.add('rsvp-nota--cerrada');
+    }
+  }
 
   function avisar(mensaje, campo) {
     error.textContent = mensaje;
@@ -172,24 +194,28 @@ var CONFIG = {
   }
   function limpiar() {
     error.hidden = true;
-    nombre.classList.remove('mal');
     asiste.classList.remove('mal');
   }
 
-  nombre.addEventListener('input', limpiar);
   asiste.addEventListener('change', limpiar);
 
+  // El guardia va siempre, incluso con el plazo vencido: si no, el navegador
+  // enviaría el formulario por su cuenta y recargaría la página
   forma.addEventListener('submit', function (evento) {
     evento.preventDefault();
     limpiar();
 
-    var quien = nombre.value.trim().replace(/\s+/g, ' ');
-    if (!quien)        { avisar('Escribe tu nombre para poder apartarte el lugar.', nombre); return; }
+    // Se revisa aquí también por si la pestaña quedó abierta desde antes
+    if (cerrado()) {
+      avisar('El plazo para confirmar ya terminó.', asiste);
+      return;
+    }
+
     if (!asiste.value) { avisar('Dinos si podrás acompañarnos.', asiste); return; }
 
     var texto = asiste.value === 'si'
-      ? 'Hola, soy ' + quien + ' y confirmo con gusto mi asistencia a los XV años de Jimena Nayeli.'
-      : 'Hola, soy ' + quien + '. Agradezco mucho la invitación a los XV años de Jimena Nayeli, pero lamentablemente no podré asistir.';
+      ? 'Hola, confirmo con gusto mi asistencia a los XV años de Jimena Nayeli.'
+      : 'Hola, agradezco mucho la invitación a los XV años de Jimena Nayeli, pero lamentablemente no podré asistir.';
 
     // Misma pestaña: Safari en iPhone bloquea window.open fuera de un gesto directo
     window.location.href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(texto);
