@@ -449,7 +449,7 @@ h1,h2{ margin:0; font-weight:400; text-wrap:balance; }
 /* ============================================================ 4 · EL GRAN DÍA */
 .dia-fiesta{
   font-family:'Allura', cursive;
-  font-size:clamp(2.2rem,10vw,2.8rem);
+  font-size:clamp(1.9rem,8.6vw,2.5rem);
   line-height:1.1;
   color:var(--polvo);
   margin-top:0.2rem;
@@ -559,6 +559,36 @@ h1,h2{ margin:0; font-weight:400; text-wrap:balance; }
   overflow:hidden;
 }
 .marco-vestimenta img{ width:100%; height:auto; }
+
+/* colores reservados para la festejada */
+.aviso-colores{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  max-width:400px;
+  margin:1.8rem auto 0;
+  padding:1.1rem 1.3rem;
+  background:var(--papel);
+  border:1px solid var(--linea);
+  border-radius:3px;
+  text-align:left;
+}
+.muestras{ display:flex; flex:none; }
+.muestra{
+  width:30px; height:30px;
+  border-radius:50%;
+  border:2px solid var(--papel);
+  box-shadow:0 0 0 1px var(--linea), 0 4px 10px -4px rgba(34,42,68,0.4);
+}
+.muestra + .muestra{ margin-left:-9px; }
+.muestra--azul { background:#7b8ea6; }   /* azul grisáceo */
+.muestra--verde{ background:#8a9a7b; }   /* verde seco */
+.aviso-colores p{
+  font-size:1.02rem;
+  line-height:1.5;
+  color:var(--tinta-suave);
+}
+.aviso-colores strong{ font-weight:500; color:var(--noche); }
 
 /* ========================================================= 6 · CONFIRMAR */
 .rsvp-caja{

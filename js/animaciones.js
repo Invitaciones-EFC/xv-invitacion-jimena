@@ -37,7 +37,7 @@ var CONFIG = {
   var Dia = dia.charAt(0).toUpperCase() + dia.slice(1);
 
   var formatos = {
-    dia:   Dia,
+    completa: f.getDate() + ' de ' + MESES[f.getMonth()] + ' de ' + f.getFullYear(),
     larga: Dia + ' ' + f.getDate() + ' de ' + MESES[f.getMonth()] + ' de ' + f.getFullYear()
   };
 
