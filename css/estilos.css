@@ -244,7 +244,28 @@ h1,h2{ margin:0; font-weight:400; text-wrap:balance; }
 @keyframes deriva1{ from{ transform:translate(0,0) scale(1); }    to{ transform:translate(4vmax,3vmax) scale(1.08); } }
 @keyframes deriva2{ from{ transform:translate(0,0) scale(1.05); } to{ transform:translate(-4vmax,-3vmax) scale(1); } }
 
-.hero-contenido{ position:relative; text-align:center; width:100%; }
+/* flores de acuarela en las esquinas, recortadas de la imagen de referencia */
+.flores{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+.flores img{
+  position:absolute;
+  width:min(350px,66vw);
+  height:auto;
+  opacity:0;
+  transition:opacity 2s ease, transform 2s var(--suave);
+}
+.flores--arriba{ top:0; left:0;     transform:translate(-14px,-14px) scale(1.06); }
+.flores--abajo { bottom:0; right:0; transform:translate(14px,14px)  scale(1.06); }
+
+/* entran cuando se abre la invitación, después de las hojas */
+.abierta .flores img{ opacity:1; transform:none; transition-delay:0.5s; }
+
+.hero-contenido{ position:relative; z-index:1; text-align:center; width:100%; }
 
 .hero-intro{
   font-family:'Marcellus', Georgia, serif;
