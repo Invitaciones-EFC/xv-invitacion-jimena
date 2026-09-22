@@ -17,7 +17,7 @@ var CONFIG = {
 
   // Ruta de la canción. Mientras esté vacía, los botones de música no se
   // muestran. Ejemplo: 'musica/cancion.mp3'
-  musica: ''
+  musica: 'musica/cancion.mp3'
 
 };
 

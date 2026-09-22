@@ -80,6 +80,4 @@ el rosa y el dorado son pequeños detalles y están ajustados a ojo.
 
 ## Pendiente
 
-- [ ] **Canción.** Déjala en `musica/` y en `js/animaciones.js` cambia
-      `musica: ''` por la ruta, por ejemplo `musica: 'musica/cancion.mp3'`.
-      Mientras esté vacía, los botones de música no aparecen.
+- [x] Canción: `musica/cancion.mp3` (2:58)
