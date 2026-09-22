@@ -10,11 +10,24 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Allura&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Marcellus&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="css/estilos.css">
 </head>
-<body>
+<body class="cerrada">
+
+<!-- ========================================================= 0 · BIENVENIDA -->
+<div class="portal" id="portal" role="dialog" aria-modal="true" aria-labelledby="portal-nombre">
+  <div class="portal-hoja portal-hoja--izq" aria-hidden="true"></div>
+  <div class="portal-hoja portal-hoja--der" aria-hidden="true"></div>
+
+  <div class="portal-contenido">
+    <p class="portal-intro">Mis XV Años</p>
+    <p class="portal-nombre" id="portal-nombre">Jimena Nayeli</p>
+    <button class="portal-btn" id="portal-btn" type="button">Abrir invitación</button>
+    <p class="portal-nota">Sube el volumen para escuchar la música</p>
+  </div>
+</div>
 
 <!-- ============================================================ 1 · PORTADA -->
 <header class="hero">
@@ -56,8 +69,8 @@
 
 <!-- ============================================================ 2 · MENSAJE -->
 <section class="section section--papel" id="mensaje">
-  <div class="inner reveal">
-    <div class="mensaje">
+  <div class="inner">
+    <div class="mensaje reveal">
       <p>
         Hay momentos que se esperan con el corazón,
         y hoy ha llegado uno de ellos.
@@ -101,11 +114,10 @@
   </div>
 </section>
 
-<!-- ========================================================= 4 · ITINERARIO -->
+<!-- ========================================================= 4 · EL GRAN DÍA -->
 <section class="section section--papel" id="itinerario">
   <div class="inner reveal">
-    <p class="eyebrow">El gran día</p>
-    <h2 class="section-title">Itinerario</h2>
+    <h2 class="section-title">El gran día</h2>
     <div class="regla" aria-hidden="true"></div>
 
     <div class="tarjetas">
@@ -158,25 +170,7 @@
   </div>
 </section>
 
-<!-- =================================================== 5 · CUENTA REGRESIVA -->
-<section class="section section--noche" id="cuenta-regresiva">
-  <div class="inner reveal">
-    <p class="eyebrow">Faltan</p>
-    <h2 class="section-title">Cuenta regresiva</h2>
-    <p class="sub">para celebrar juntos</p>
-
-    <div class="contador" id="contador">
-      <div class="contador-caja"><p class="contador-num" id="c-dias">00</p><p class="contador-etiqueta">Días</p></div>
-      <div class="contador-caja"><p class="contador-num" id="c-horas">00</p><p class="contador-etiqueta">Horas</p></div>
-      <div class="contador-caja"><p class="contador-num" id="c-min">00</p><p class="contador-etiqueta">Min</p></div>
-      <div class="contador-caja"><p class="contador-num" id="c-seg">00</p><p class="contador-etiqueta">Seg</p></div>
-    </div>
-
-    <p class="contador-llego" id="contador-llego">¡Hoy es el gran día!</p>
-  </div>
-</section>
-
-<!-- =============================================== 6 · CÓDIGO DE VESTIMENTA -->
+<!-- =============================================== 5 · CÓDIGO DE VESTIMENTA -->
 <section class="section section--niebla" id="vestimenta">
   <div class="inner reveal">
     <p class="eyebrow">Código de vestimenta</p>
@@ -191,7 +185,7 @@
   </div>
 </section>
 
-<!-- ========================================================== 7 · CONFIRMAR -->
+<!-- ========================================================== 6 · CONFIRMAR -->
 <section class="section section--papel" id="confirmar">
   <div class="inner reveal">
     <p class="eyebrow">Confirma tu asistencia</p>
@@ -231,7 +225,7 @@
   </div>
 </section>
 
-<!-- ============================================================= 8 · CIERRE -->
+<!-- ============================================================= 7 · CIERRE -->
 <footer class="cierre">
   <p class="cierre-nombre">Jimena Nayeli</p>
   <div class="regla" aria-hidden="true"></div>

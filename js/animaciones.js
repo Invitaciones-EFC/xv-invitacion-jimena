@@ -48,6 +48,36 @@ var CONFIG = {
   });
 })();
 
+/* ------------------------------------------------ bienvenida: abrir la invitación
+   El toque en "Abrir invitación" hace tres cosas a la vez: arranca la música
+   (el celular solo deja sonar audio si viene de un toque), abre las hojas y
+   dispara la entrada de la portada. */
+(function () {
+  var portal = document.getElementById('portal');
+  var boton  = document.getElementById('portal-btn');
+  var audio  = document.getElementById('audio-invitacion');
+  if (!portal || !boton) { document.body.classList.remove('cerrada'); return; }
+
+  var reducido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  boton.addEventListener('click', function () {
+    boton.disabled = true;
+
+    // La canción ya la cargó el bloque de música; aquí solo se le da play
+    if (CONFIG.musica && audio && audio.getAttribute('src')) {
+      var intento = audio.play();
+      if (intento && intento.catch) intento.catch(function () {});
+    }
+
+    portal.classList.add('abriendo');
+    document.body.classList.remove('cerrada');
+    document.body.classList.add('abierta');
+
+    // Se quita del todo cuando las hojas terminan de abrirse
+    setTimeout(function () { portal.remove(); }, reducido ? 450 : 1600);
+  });
+})();
+
 /* ------------------------------------------------------------------ música */
 (function () {
   var audio    = document.getElementById('audio-invitacion');
@@ -150,14 +180,24 @@ var CONFIG = {
 
 /* --------------------------------------------------- aparición al bajar --- */
 (function () {
-  var elementos = document.querySelectorAll('.reveal');
+  // Cada hijo de una sección .reveal recibe su turno en --i, y el CSS lo
+  // convierte en retraso: así entran en cascada y no todos de golpe
+  var bloques = document.querySelectorAll('.reveal');
+  bloques.forEach(function (bloque) {
+    Array.prototype.forEach.call(bloque.children, function (hijo, i) {
+      hijo.style.setProperty('--i', i);
+    });
+  });
+
+  // Las tarjetas se observan aparte: la segunda está mucho más abajo y su
+  // foto debe destaparse cuando llegue a ella, no cuando entra la sección
+  var elementos = document.querySelectorAll('.reveal, .tarjeta');
 
   if (!('IntersectionObserver' in window)) {
     elementos.forEach(function (el) { el.classList.add('is-visible'); });
     return;
   }
 
-  // Aparece en cuanto el borde superior entra 60px en pantalla
   var observador = new IntersectionObserver(function (entradas) {
     entradas.forEach(function (entrada) {
       if (entrada.isIntersecting) {
@@ -165,46 +205,7 @@ var CONFIG = {
         observador.unobserve(entrada.target);
       }
     });
-  }, { threshold: 0, rootMargin: '0px 0px -60px 0px' });
+  }, { threshold: 0, rootMargin: '0px 0px -70px 0px' });
 
   elementos.forEach(function (el) { observador.observe(el); });
-})();
-
-/* ------------------------------------------------------- cuenta regresiva */
-(function () {
-  var destino = CONFIG.fecha.getTime();
-  var grid  = document.getElementById('contador');
-  var aviso = document.getElementById('contador-llego');
-  if (!grid) return;
-
-  var celdas = ['c-dias', 'c-horas', 'c-min', 'c-seg'].map(function (id) {
-    return document.getElementById(id);
-  });
-
-  function dosDigitos(n) { return String(n).padStart(2, '0'); }
-
-  function poner(el, valor) {
-    if (el.textContent === valor) return;
-    el.textContent = valor;
-    el.classList.remove('late');
-    void el.offsetWidth;          // reinicia la animación
-    el.classList.add('late');
-  }
-
-  function actualizar() {
-    var r = destino - Date.now();
-    if (r <= 0) {
-      grid.style.display = 'none';
-      aviso.style.display = 'block';
-      clearInterval(intervalo);
-      return;
-    }
-    poner(celdas[0], dosDigitos(Math.floor(r / 86400000)));
-    poner(celdas[1], dosDigitos(Math.floor((r % 86400000) / 3600000)));
-    poner(celdas[2], dosDigitos(Math.floor((r % 3600000) / 60000)));
-    poner(celdas[3], dosDigitos(Math.floor((r % 60000) / 1000)));
-  }
-
-  actualizar();
-  var intervalo = setInterval(actualizar, 1000);
 })();
