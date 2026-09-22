@@ -37,13 +37,31 @@ var CONFIG = {
   var Dia = dia.charAt(0).toUpperCase() + dia.slice(1);
 
   var formatos = {
-    corta: Dia + ' · ' + f.getDate() + ' · ' + MESES[f.getMonth()] + ' · ' + f.getFullYear(),
+    dia:   Dia,
     larga: Dia + ' ' + f.getDate() + ' de ' + MESES[f.getMonth()] + ' de ' + f.getFullYear()
   };
 
   Object.keys(formatos).forEach(function (clave) {
     document.querySelectorAll('[data-fecha="' + clave + '"]').forEach(function (el) {
       el.textContent = formatos[clave];
+    });
+  });
+
+  // Portada: "7 · noviembre · 2026", con cada punto en su propio span para
+  // pintarlo en dorado y darle aire a los lados
+  var partes = [String(f.getDate()), MESES[f.getMonth()], String(f.getFullYear())];
+  document.querySelectorAll('[data-fecha="corta"]').forEach(function (el) {
+    el.textContent = '';
+    el.setAttribute('aria-label', f.getDate() + ' de ' + MESES[f.getMonth()] + ' de ' + f.getFullYear());
+    partes.forEach(function (texto, i) {
+      if (i) {
+        var punto = document.createElement('span');
+        punto.className = 'punto';
+        punto.setAttribute('aria-hidden', 'true');
+        punto.textContent = '·';
+        el.appendChild(punto);
+      }
+      el.appendChild(document.createTextNode(texto));
     });
   });
 })();

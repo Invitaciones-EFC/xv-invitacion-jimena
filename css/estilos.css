@@ -191,14 +191,6 @@ h1,h2{ margin:0; font-weight:400; text-wrap:balance; }
   0%  { transform:scale(1);    opacity:0.7; }
   100%{ transform:scale(1.18,1.45); opacity:0; }
 }
-.portal-nota{
-  margin-top:1.1rem;
-  font-style:italic;
-  font-size:0.95rem;
-  color:#aebbd0;
-  animation:subir 1.2s 0.9s var(--suave) both;
-}
-
 @keyframes subir{
   from{ opacity:0; transform:translateY(18px); }
   to  { opacity:1; transform:none; }
@@ -269,12 +261,22 @@ h1,h2{ margin:0; font-weight:400; text-wrap:balance; }
 .hero-nombre span + span{ margin-top:-0.08em; }
 
 .hero-fecha{
-  margin-top:clamp(1.2rem,3.5vh,1.8rem);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-top:clamp(1.3rem,3.8vh,2rem);
   font-family:'Marcellus', Georgia, serif;
-  font-size:clamp(0.82rem,3.6vw,0.96rem);
-  letter-spacing:0.24em;
-  text-transform:uppercase;
+  font-size:clamp(1.15rem,5vw,1.4rem);
+  letter-spacing:0.14em;
   color:var(--noche);
+}
+/* el punto medio en dorado, más grande y con aire a los lados */
+.hero-fecha .punto{
+  color:var(--dorado);
+  font-size:1.35em;
+  line-height:1;
+  margin:0 0.55em;
+  transform:translateY(-0.04em);
 }
 
 .hero-flecha{
@@ -445,6 +447,13 @@ h1,h2{ margin:0; font-weight:400; text-wrap:balance; }
 }
 
 /* ============================================================ 4 · EL GRAN DÍA */
+.dia-fiesta{
+  font-family:'Allura', cursive;
+  font-size:clamp(2.2rem,10vw,2.8rem);
+  line-height:1.1;
+  color:var(--polvo);
+  margin-top:0.2rem;
+}
 .tarjetas{
   display:flex;
   flex-direction:column;
