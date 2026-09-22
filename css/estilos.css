@@ -560,35 +560,53 @@ h1,h2{ margin:0; font-weight:400; text-wrap:balance; }
 }
 .marco-vestimenta img{ width:100%; height:auto; }
 
-/* colores reservados para la festejada */
+/* colores reservados para la festejada: dos muestras centradas con su nombre */
 .aviso-colores{
-  display:flex;
-  align-items:center;
-  gap:1rem;
-  max-width:400px;
+  width:min(320px,100%);
   margin:1.8rem auto 0;
-  padding:1.1rem 1.3rem;
+  padding:1.4rem 1.2rem 1.5rem;
   background:var(--papel);
   border:1px solid var(--linea);
   border-radius:3px;
-  text-align:left;
+  box-shadow:var(--sombra);
 }
-.muestras{ display:flex; flex:none; }
-.muestra{
-  width:30px; height:30px;
+.aviso-titulo{
+  font-family:'Marcellus', Georgia, serif;
+  font-size:0.72rem;
+  letter-spacing:0.22em;
+  line-height:1.6;
+  text-transform:uppercase;
+  color:var(--medio);
+}
+.muestras{
+  display:flex;
+  justify-content:center;
+  gap:2.2rem;
+  margin:1.1rem 0 0;
+  padding:0;
+  list-style:none;
+}
+.muestras li{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0.6rem;
+}
+.circulo{
+  display:block;
+  width:46px;
+  height:46px;
   border-radius:50%;
-  border:2px solid var(--papel);
-  box-shadow:0 0 0 1px var(--linea), 0 4px 10px -4px rgba(34,42,68,0.4);
+  border:3px solid #fff;
+  box-shadow:0 0 0 1px var(--linea), 0 8px 18px -8px rgba(34,42,68,0.5);
 }
-.muestra + .muestra{ margin-left:-9px; }
-.muestra--azul { background:#7b8ea6; }   /* azul grisáceo */
-.muestra--verde{ background:#8a9a7b; }   /* verde seco */
-.aviso-colores p{
-  font-size:1.02rem;
-  line-height:1.5;
-  color:var(--tinta-suave);
+.circulo--azul { background:#7b8ea6; }   /* azul grisáceo */
+.circulo--verde{ background:#8a9a7b; }   /* verde seco */
+.muestra-nombre{
+  font-size:1.05rem;
+  color:var(--noche);
+  line-height:1.2;
 }
-.aviso-colores strong{ font-weight:500; color:var(--noche); }
 
 /* ========================================================= 6 · CONFIRMAR */
 .rsvp-caja{

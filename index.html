@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Allura&family=Marcellus&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="css/estilos.css">
+<link rel="stylesheet" href="css/estilos.css?v=2">
 </head>
 <body class="cerrada">
 
@@ -184,14 +184,17 @@
     </figure>
 
     <div class="aviso-colores">
-      <div class="muestras" aria-hidden="true">
-        <span class="muestra muestra--azul"></span>
-        <span class="muestra muestra--verde"></span>
-      </div>
-      <p>
-        Los colores <strong>azul grisáceo</strong> y <strong>verde seco</strong>
-        están reservados para la festejada.
-      </p>
+      <p class="aviso-titulo">Colores reservados para la festejada</p>
+      <ul class="muestras">
+        <li>
+          <span class="circulo circulo--azul" aria-hidden="true"></span>
+          <span class="muestra-nombre">Azul grisáceo</span>
+        </li>
+        <li>
+          <span class="circulo circulo--verde" aria-hidden="true"></span>
+          <span class="muestra-nombre">Verde seco</span>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
@@ -243,6 +246,6 @@
   <p class="cierre-fecha" data-fecha="larga">Sábado 7 de noviembre de 2026</p>
 </footer>
 
-<script src="js/animaciones.js"></script>
+<script src="js/animaciones.js?v=2"></script>
 </body>
 </html>
