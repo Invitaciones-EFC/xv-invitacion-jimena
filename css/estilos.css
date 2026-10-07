@@ -647,28 +647,7 @@ h1,h2{ margin:0; font-weight:400; text-wrap:balance; }
   margin-bottom:1.8rem;
   line-height:1.7;
 }
-/* recordatorio de la fecha límite */
-.rsvp-plazo{
-  font-family:'Marcellus', Georgia, serif;
-  font-size:0.82rem;
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-  color:var(--medio);
-  padding:0.75rem 1rem;
-  margin-bottom:1.6rem;
-  border-top:1px solid var(--linea);
-  border-bottom:1px solid var(--linea);
-}
-.rsvp-plazo strong{ color:var(--noche); font-weight:400; }
-
 .rsvp-form{ display:flex; flex-direction:column; text-align:left; }
-
-/* cuando ya pasó la fecha límite */
-.rsvp-form.cerrado{ opacity:0.55; }
-.rsvp-form.cerrado .campo,
-.rsvp-form.cerrado .btn-confirmar{ cursor:not-allowed; }
-.rsvp-form.cerrado .btn-confirmar{ background:var(--tinta-suave); }
-.rsvp-nota--cerrada{ font-style:normal; color:var(--noche); }
 
 .campo-etiqueta{
   font-family:'Marcellus', Georgia, serif;
